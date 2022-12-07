@@ -1,0 +1,89 @@
+<openerp>
+    <data>
+        <record model = 'ir.ui.view' id = 'cash_management_claim_payment_wizard'>
+            <field name = 'name'>Claim Payment</field>
+            <field name = 'model'>cash.management.staff.claim.payments</field>
+            <field name = 'arch' type = 'xml'>
+                <form string = 'Claim Payments'>
+                    <group>
+                        <group>
+                            <field name = 'name'/>
+                            <field name = 'amount'/>
+                            <field name = 'paying_bank'/>
+                        </group>
+                        <group>
+                            <field name = 'date'/>
+                            <field name = 'payment_reference'/>
+                            <field name = 'claim_id' invisible = '1'/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name = "action_post" type = "object" string = "Pay Claim" class = "oe_highlight"/>
+                        or
+                        <button special = "cancel" string = "Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id = "launch_staff_claim_payment_wizard"
+            name = "Staff Claim Payment"
+            src_model = "cash.management.staff.claim"
+            res_model = "cash.management.staff.claim.payments"
+            view_mode = "form"
+            target = "new"
+            key2 = "client_action_multi"/>
+
+            <record model="ir.ui.view" id="batch_post_petty_cash_wizard">
+                <field name="name">Batch Post Petty Cash Wizard</field>
+                <field name="model">batch.post.petty.cash.wizard</field>
+                <field name="arch" type="xml">
+                    <form string = "Batch Post Petty Cash Wizard Form">
+                        <group>
+                           <p>Batch post petty cash requests</p>
+                        </group>
+                        <footer>
+                            <button name = "batch_post" type = "object" string = "Batch Post" class = "oe_highlight"/>
+                            or
+                            <button special = "cancel" string = "Cancel"/>
+                        </footer>
+                    </form>
+                </field>
+            </record>
+    
+            <act_window id = "launch_batch_post_petty_cash_wizard"
+                name = "Batch Post Petty Cash Requests"
+                src_model = "cash.management.petty.cash.header"
+                res_model = "batch.post.petty.cash.wizard"
+                view_id = "batch_post_petty_cash_wizard" 
+                view_mode = "form"
+                target = "new"
+                key2 = "client_action_multi" />
+
+                <record model="ir.ui.view" id="batch_post_bank_cash_cash_wizard">
+                    <field name="name">Batch Post Bank Cash Transfer Wizard</field>
+                    <field name="model">batch.post.bank.cash.transfers</field>
+                    <field name="arch" type="xml">
+                        <form string = "Batch Post Bank Cash Transfer Wizard Form">
+                            <group>
+                               <p>Batch post bank and cash tranfer requests</p>
+                            </group>
+                            <footer>
+                                <button name = "batch_post" type = "object" string = "Batch Post" class = "oe_highlight"/>
+                                or
+                                <button special = "cancel" string = "Cancel"/>
+                            </footer>
+                        </form>
+                    </field>
+                </record>
+        
+                <act_window id = "launch_batch_post_bank_cash_transfer_wizard"
+                    name = "Batch Post Bank Cash Transfer Requests"
+                    src_model = "cash.management.bank.transfer.header"
+                    res_model = "batch.post.bank.cash.transfers"
+                    view_id = "batch_post_bank_cash_cash_wizard" 
+                    view_mode = "form"
+                    target = "new"
+                    key2 = "client_action_multi" />
+    </data>
+</openerp>

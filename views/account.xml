@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_account_form">
+            <field name="name">account.account.form.foreign.currency</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_form" />
+            <field name="arch" type="xml">
+                <field name="currency_mode" position="before">
+                    <field name="foreign_balance" />
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
